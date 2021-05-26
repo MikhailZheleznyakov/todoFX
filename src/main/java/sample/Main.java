@@ -25,7 +25,7 @@ public class Main extends Application {
     }
 
     public void showRegistration() throws IOException{
-        FXMLLoader loader = new FXMLLoader(new File("C:/Users/irong/Desktop/2 курс/JAVA/todoFX/src/main/java/sample/views/Registration.fxml").toURI().toURL());
+        FXMLLoader loader = new FXMLLoader(new File("C:/Users/irong/Desktop/2 курс/JAVA/todoFX/src/main/java/sample/views/Enter.fxml").toURI().toURL());
         AnchorPane registration = loader.load();
         Scene scene = new Scene(registration);
         primaryStage.setScene(scene);

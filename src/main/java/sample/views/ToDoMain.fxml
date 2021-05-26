@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.views.ToDoMain">
+   <children>
+      <HBox layoutX="41.0" layoutY="29.0" spacing="30.0">
+         <children>
+            <Button mnemonicParsing="false" text="Добавить задачу" />
+            <Button mnemonicParsing="false" text="Изменить задачу" />
+            <Button mnemonicParsing="false" text="Удалить задачу" />
+            <Button mnemonicParsing="false" text="Завершить задачу" />
+         </children>
+      </HBox>
+      <TableView layoutX="116.0" layoutY="75.0" prefHeight="227.0" prefWidth="367.0">
+        <columns>
+          <TableColumn prefWidth="233.20001220703125" text="Задача" />
+          <TableColumn prefWidth="132.4000244140625" text="Дедлайн" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Button layoutX="278.0" layoutY="329.0" mnemonicParsing="false" text="Категории" />
+   </children>
+</AnchorPane>
