@@ -1,4 +1,5 @@
 package sample.models;
 
-public class User {
+public class User implements APIModel{
+
 }
