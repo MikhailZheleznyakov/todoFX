@@ -13,7 +13,7 @@ public class Category implements APIModel{
     private final StringProperty name;
     private final LongProperty id;
 
-    public Category(Long id, String name, Task task){
+    public Category(Long id, String name){
         this.id = new SimpleLongProperty(id);
         this.name = new SimpleStringProperty(name);
     }

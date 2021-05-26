@@ -28,11 +28,11 @@
             <Label text="Наименование" />
             <Label text="Описание" GridPane.rowIndex="1" />
             <Label text="Дедлайн" GridPane.rowIndex="2" />
-            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextArea prefHeight="91.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" />
+            <DatePicker fx:id="deadline" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextArea fx:id="taskDesc" prefHeight="91.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="nameTask" GridPane.columnIndex="1" />
             <Label text="Категория" GridPane.rowIndex="3" />
-            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="taskCategory" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </children>

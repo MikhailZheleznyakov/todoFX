@@ -16,10 +16,14 @@ public class RegistrationController {
     private PasswordField passwordSign;
 
     @FXML
-    private Label loginLabelSign;
+    private TextField textLoginReg;
 
     @FXML
-    private Label passwordLabelSign;
+    private PasswordField textPasswordReg;
+
+    @FXML
+    private PasswordField textAgainPasswordReg;
+
 
 
     @FXML
