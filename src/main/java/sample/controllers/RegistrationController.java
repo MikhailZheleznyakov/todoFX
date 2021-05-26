@@ -24,12 +24,14 @@ public class RegistrationController {
     @FXML
     private PasswordField textAgainPasswordReg;
 
-
+    @FXML
+    private void initialize(){};
 
     @FXML
     public void enterRegistration(){
-        stage.close();
     }
+
+
 
 
 }
