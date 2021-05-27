@@ -8,27 +8,18 @@
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
          <children>
-            <Label layoutX="244.0" layoutY="34.0" text="Категория">
+            <Label layoutX="244.0" layoutY="75.0" text="Категория">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <HBox layoutX="147.0" layoutY="314.0" spacing="20.0">
+            <HBox layoutX="202.0" layoutY="292.0" spacing="80.0">
                <children>
-                  <Button mnemonicParsing="false" text="Создать" />
-                  <Button mnemonicParsing="false" text="Изменить" />
-                  <Button mnemonicParsing="false" text="Удалить" />
-                  <Button mnemonicParsing="false" text="Задачи" />
+                  <Button mnemonicParsing="false" onAction="#handleCreate" text="Создать" />
+                  <Button mnemonicParsing="false" onAction="#handleCancel" text="Задачи" />
                </children>
             </HBox>
-            <TableView fx:id="tableCategory" layoutX="200.0" layoutY="101.0" prefHeight="164.0" prefWidth="200.0">
-              <columns>
-                <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Наименование" />
-              </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
-            </TableView>
+            <TextField fx:id="textCategory" layoutX="179.0" layoutY="173.0" prefHeight="26.0" prefWidth="241.0" promptText="введите категорию" />
          </children>
       </AnchorPane>
    </children>
