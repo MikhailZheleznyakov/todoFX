@@ -73,7 +73,7 @@ public class RegistrationController {
             }
             for (User i: userData){
                 if (i.getPassword().equals(passwordSign.getText())&i.getLogin().equals(textLoginSign.getText())){
-                    break;
+                    main.showToDoMain();
                 } else {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.initOwner(main.getPrimaryStage());
@@ -110,7 +110,7 @@ public class RegistrationController {
         }
     }
 
-
-
-
+    public void setMain(Main main) {
+        this.main = main;
+    }
 }

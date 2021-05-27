@@ -40,6 +40,10 @@ public class TaskController {
         return okClicked;
     }
 
+    public void setMain(Main main) {
+        this.main = main;
+    }
+
     public void setTask(Task task){
         this.task = task;
         nameTask.setText(task.getName());

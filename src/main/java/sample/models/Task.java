@@ -11,6 +11,7 @@ public class Task implements APIModel{
     private final ObjectProperty<LocalDate> deadline;
     private final LongProperty id;
     private User user;
+    private Category category;
 
     public Task(Long id, String name, String description, Object deadline, User user) {
         this.id = new SimpleLongProperty(id);
@@ -31,6 +32,7 @@ public class Task implements APIModel{
 
         return map;
     }
+
 
     public String getName() {
         return name.get();

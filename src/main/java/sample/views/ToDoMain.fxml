@@ -7,21 +7,21 @@
    <children>
       <HBox layoutX="41.0" layoutY="29.0" spacing="30.0">
          <children>
-            <Button mnemonicParsing="false" text="Добавить задачу" />
-            <Button mnemonicParsing="false" text="Изменить задачу" />
-            <Button mnemonicParsing="false" text="Удалить задачу" />
-            <Button mnemonicParsing="false" text="Завершить задачу" />
+            <Button fx:id="handleNewTask" mnemonicParsing="false" text="Добавить задачу" />
+            <Button fx:id="handleEditTask" mnemonicParsing="false" text="Изменить задачу" />
+            <Button fx:id="handleDeleteTask" mnemonicParsing="false" text="Удалить задачу" />
+            <Button fx:id="handleAcceptTask" mnemonicParsing="false" text="Завершить задачу" />
          </children>
       </HBox>
-      <TableView fx:id="tableToDo" layoutX="116.0" layoutY="75.0" prefHeight="227.0" prefWidth="367.0">
+      <TableView fx:id="tableToDo" layoutX="187.0" layoutY="74.0" prefHeight="227.0" prefWidth="327.0">
         <columns>
-          <TableColumn fx:id="taskColumn" prefWidth="233.20001220703125" text="Задача" />
-          <TableColumn fx:id="deadlineColumn" prefWidth="132.4000244140625" text="Дедлайн" />
+          <TableColumn fx:id="taskColumn" prefWidth="202.19997787475586" text="Задача" />
+          <TableColumn fx:id="deadlineColumn" prefWidth="123.40003967285156" text="Дедлайн" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button layoutX="278.0" layoutY="329.0" mnemonicParsing="false" text="Категории" />
+      <Button fx:id="handleCancel" layoutX="314.0" layoutY="338.0" mnemonicParsing="false" text="Категории" />
    </children>
 </AnchorPane>
