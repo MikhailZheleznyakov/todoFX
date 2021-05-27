@@ -45,8 +45,10 @@ public class RegistrationController {
         if (textPasswordReg.getText().equals(textAgainPasswordReg.getText())){
             newUser.setLogin(textLoginReg.getText());
             newUser.setPassword(textPasswordReg.getText());
+            newUser.setName(null);
         }
         try {
+            System.out.println(newUser.toJson());
             myApiSession.createUser(newUser);
         } catch (NoConnectionException e) {
             Alert alert = new Alert(Alert.AlertType.WARNING);

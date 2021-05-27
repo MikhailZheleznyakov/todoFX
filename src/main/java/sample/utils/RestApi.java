@@ -13,7 +13,7 @@ import java.time.LocalDate;
 
 public class RestApi {
     private Main main;
-    private static final String ServerURL = "http://localhost:8282";
+    private static final String ServerURL = "http://localhost:8484";
 
 
     public void createUser(User user) throws NoConnectionException {

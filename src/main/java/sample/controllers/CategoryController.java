@@ -14,7 +14,6 @@ public class CategoryController {
     private TextField textCategory;
 
     private Stage dialogStage;
-    private Category category;
     private boolean okClicked = false;
     private Main main;
     private RestApi myApiSession = new RestApi();
