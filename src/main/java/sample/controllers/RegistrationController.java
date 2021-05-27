@@ -28,7 +28,15 @@ public class RegistrationController {
     private void initialize(){};
 
     @FXML
-    public void enterRegistration(){
+    public void handleReg(){
+
+    };
+
+    @FXML
+    public void handleCancel(){};
+
+    @FXML
+    public void handleEnter(){
     }
 
 

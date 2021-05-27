@@ -11,7 +11,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="278.0" layoutY="269.0" mnemonicParsing="false" onAction="#enterRegistration" text="Вход" />
+                        <Button layoutX="278.0" layoutY="269.0" mnemonicParsing="false" onAction="#handleEnter" text="Вход" />
                         <Label layoutX="223.0" layoutY="52.0" prefHeight="18.0" prefWidth="58.0" text="Логин" />
                         <Label layoutX="223.0" layoutY="166.0" prefHeight="18.0" prefWidth="73.0" text="Пароль" />
                         <TextField fx:id="textLoginSign" layoutX="222.0" layoutY="102.0" prefHeight="26.0" prefWidth="154.0" promptText="введите логин" />
@@ -30,8 +30,8 @@
                         <Label layoutX="226.0" layoutY="37.0" prefHeight="18.0" prefWidth="146.0" text="Логин" />
                         <Label layoutX="227.0" layoutY="123.0" prefHeight="18.0" prefWidth="148.0" text="Пароль" />
                         <Label layoutX="242.0" layoutY="219.0" text="Повторите пароль" />
-                        <Button layoutX="114.0" layoutY="306.0" mnemonicParsing="false" text="Регистрация" />
-                        <Button layoutX="437.0" layoutY="306.0" mnemonicParsing="false" text="Назад" />
+                        <Button layoutX="114.0" layoutY="306.0" mnemonicParsing="false" onAction="#handleReg" text="Регистрация" />
+                        <Button layoutX="437.0" layoutY="306.0" mnemonicParsing="false" onAction="#handleCancel" text="Назад" />
                      </children>
                   </AnchorPane>
             </content>

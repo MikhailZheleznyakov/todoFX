@@ -12,15 +12,17 @@ public class User implements APIModel{
     private final StringProperty name;
     private final StringProperty father_name;
     private final ObjectProperty<LocalDate> birthday;
+    private final StringProperty password;
     private final LongProperty id;
 
 
-    public User(Long id, String login, String surname, String name, String father_name, Object birthday) {
+    public User(Long id, String login, String surname, String name, String father_name, String password, Object birthday) {
         this.id = new SimpleLongProperty(id);
         this.login = new SimpleStringProperty(login);
         this.surname = new SimpleStringProperty(surname);
         this.name = new SimpleStringProperty(name);
         this.father_name = new SimpleStringProperty(father_name);
+        this.password = new SimpleStringProperty(password);
         this.birthday = new SimpleObjectProperty<LocalDate>((LocalDate) birthday);
     }
 
@@ -32,6 +34,7 @@ public class User implements APIModel{
         map.put("surname", surname.get());
         map.put("name", name.get());
         map.put("father_name", father_name.get());
+        map.put("password", password.get());
         map.put("birthday", birthday.get());
 
         return map;
@@ -109,6 +112,18 @@ public class User implements APIModel{
         this.id.set(id);
     }
 
+    public String getPassword() {
+        return password.get();
+    }
+
+    public StringProperty passwordProperty() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password.set(password);
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -117,6 +132,7 @@ public class User implements APIModel{
                 ", name=" + name +
                 ", father_name=" + father_name +
                 ", birthday=" + birthday +
+                ", password=" + password +
                 ", id=" + id +
                 '}';
     }

@@ -29,7 +29,7 @@ public class HttpClass {
         }
     }
 
-    public static String PostRequest(String urlString, String jsonString){
+    public static String PostRequest(String urlString, JSONObject jsonString){
         try {
             URL url = new URL(urlString);
             URLConnection conn = url.openConnection();
@@ -38,7 +38,7 @@ public class HttpClass {
             http.setRequestMethod("POST");
             http.setDoOutput(true);
 
-            byte[] out = jsonString.getBytes(StandardCharsets.UTF_8);
+            byte[] out = jsonString.toString().getBytes(StandardCharsets.UTF_8);
             int length = out.length;
             http.setFixedLengthStreamingMode(length);
             http.setRequestProperty("Content-Type", "application/json; charset=UTF_8" );
@@ -62,35 +62,21 @@ public class HttpClass {
         }
     }
 
-    public static String DeleteRequest(String urlString, String jsonString){
+    public static boolean DeleteRequest(String urlString) {
         try {
+
             URL url = new URL(urlString);
             URLConnection conn = url.openConnection();
             HttpURLConnection http = (HttpURLConnection) conn;
 
             http.setRequestMethod("DELETE");
             http.setDoOutput(true);
-
-            byte[] out = jsonString.getBytes(StandardCharsets.UTF_8);
-            int length = out.length;
-            http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json; charset=UTF_8" );
             http.connect();
-            try (OutputStream os = http.getOutputStream()) {
-                os.write(out);
-            }
 
-            StringBuilder sb = new StringBuilder();
-            InputStream is = new BufferedInputStream(conn.getInputStream());
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-            String inputLine = "";
-            while ((inputLine = br.readLine()) != null){
-                sb.append(inputLine);
-            }
-            return sb.toString();
-        } catch (IOException e){
-            e.printStackTrace();
-            return null;
+            http.getResponseCode();
+            return true;
+        } catch (IOException e) {
+            return false;
         }
     }
     public static String PutRequest(String urlString, JSONObject jsonString) {
