@@ -4,12 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.Main;
-import sample.models.Category;
 import sample.models.User;
 import sample.utils.NoConnectionException;
 import sample.utils.RestApi;
@@ -113,5 +111,9 @@ public class RegistrationController {
 
     public void setMain(Main main) {
         this.main = main;
+    }
+
+    public String getLogin(){
+        return textLoginSign.getText();
     }
 }

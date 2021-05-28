@@ -4,23 +4,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.CategoryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.CategoryController">
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="600.0">
-         <children>
-            <Label layoutX="244.0" layoutY="75.0" text="Категория">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <HBox layoutX="202.0" layoutY="292.0" spacing="80.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#handleCreate" text="Создать" />
-                  <Button mnemonicParsing="false" onAction="#handleCancel" text="Задачи" />
-               </children>
-            </HBox>
-            <TextField fx:id="textCategory" layoutX="179.0" layoutY="173.0" prefHeight="26.0" prefWidth="241.0" promptText="введите категорию" />
-         </children>
-      </AnchorPane>
+      <Button layoutX="182.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleCreate" text="Создать" />
+      <Button layoutX="365.0" layoutY="323.0" mnemonicParsing="false" onAction="#handleCancel" text="Назад" />
+      <Label layoutX="234.0" layoutY="67.0" text="Категория">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textCategory" layoutX="190.0" layoutY="187.0" prefHeight="26.0" prefWidth="218.0" promptText="введите категорию" />
    </children>
-</HBox>
+</AnchorPane>

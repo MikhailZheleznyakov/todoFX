@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -13,6 +14,8 @@ import sample.controllers.RegistrationController;
 import sample.controllers.TaskController;
 import sample.controllers.ToDoMainController;
 import sample.models.Task;
+import sample.utils.NoConnectionException;
+import sample.utils.RestApi;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,6 +23,7 @@ import java.io.IOException;
 public class Main extends Application {
 
     private Stage primaryStage;
+    private RestApi myApiSession = new RestApi();
     private ObservableList<Task> taskData = FXCollections.observableArrayList();
 
     @Override
@@ -54,9 +58,25 @@ public class Main extends Application {
             // Даём контроллеру доступ к главному приложению.
             ToDoMainController controller = loader.getController();
             controller.setMain(this);
+            controller.addTaskData();
             primaryStage.show();
 
         } catch (IOException e) {
+        }
+    }
+
+    public void updateTaskTable() {
+        taskData.clear();
+        //Читаем коллекцию персон с бека и обновляем ее
+        try {
+            taskData.addAll(myApiSession.getTask());
+        } catch (NoConnectionException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.initOwner(getPrimaryStage());
+            alert.setTitle("Ошибка");
+            alert.setHeaderText("Нет соединения");
+
+            alert.showAndWait();
         }
     }
 
@@ -65,14 +85,21 @@ public class Main extends Application {
             // Загружаем сведения об адресатах.
             FXMLLoader loader = new FXMLLoader(new File("C:/Users/irong/Desktop/2 курс/JAVA/todoFX/src" +
                     "/main/java/sample/views/Category.fxml").toURI().toURL());
-            AnchorPane todomain = (AnchorPane) loader.load();
-            Scene scene = new Scene(todomain);
-            primaryStage.setScene(scene);
+            AnchorPane category = (AnchorPane) loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Edit Category");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(category);
+            dialogStage.setScene(scene);
 
-            // Даём контроллеру доступ к главному приложению.
-            CategoryController controller = loader.getController();
-            controller.setMain(this);
-            primaryStage.show();
+            // Передаём адресата в контроллер.
+            CategoryController controllerEditDialog = loader.getController();
+            controllerEditDialog.setDialogStage(dialogStage);
+            controllerEditDialog.setMain(this);
+
+            // Отображаем диалоговое окно и ждём, пока пользователь его не закроет
+            dialogStage.showAndWait();
 
         } catch (IOException e) {
         }

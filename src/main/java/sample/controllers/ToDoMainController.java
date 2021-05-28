@@ -35,6 +35,11 @@ public class ToDoMainController {
     }
 
 
+    public void addTaskData(){
+        main.updateTaskTable();
+        tableToDo.setItems(main.getTaskData());
+    }
+
     @FXML
     private void handleAcceptTask() {
         int selectedIndex = tableToDo.getSelectionModel().getSelectedIndex();
@@ -174,6 +179,7 @@ public class ToDoMainController {
 
     @FXML
     private void handleCancel() {
+        System.out.println("категория");
         main.showCategory();
     }
 

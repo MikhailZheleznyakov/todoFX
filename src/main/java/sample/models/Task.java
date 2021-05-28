@@ -28,7 +28,7 @@ public class Task implements APIModel{
         map.put("name", name.get());
         map.put("description", description.get());
         map.put("deadline", deadline.get());
-        map.put("user", user.toJson());
+        map.put("user_id", user.toJson());
 
         return map;
     }

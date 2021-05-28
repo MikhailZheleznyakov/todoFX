@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import sample.Main;
 import sample.models.Category;
 import sample.models.Task;
+import sample.models.User;
 import sample.utils.NoConnectionException;
 import sample.utils.RestApi;
 
@@ -25,7 +26,7 @@ public class TaskController {
     private Task task;
     private Category category;
     private boolean okClicked = false;
-    private Main main;
+    private Main main = new Main();
     private RestApi myApiSession = new RestApi();
     private ObservableList<Category> categoryData = FXCollections.observableArrayList();
 
@@ -44,6 +45,8 @@ public class TaskController {
         this.main = main;
     }
 
+
+
     public void setTask(Task task){
         this.task = task;
         nameTask.setText(task.getName());
@@ -52,6 +55,7 @@ public class TaskController {
         ObservableList<String> viewCategory = FXCollections.observableArrayList();
         try {
             categoryData = myApiSession.getCategory();
+            System.out.println(categoryData.toString());
         } catch (NoConnectionException e) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.initOwner(main.getPrimaryStage());
@@ -64,12 +68,12 @@ public class TaskController {
             viewCategory.add(i.getName());
         }
         taskCategory.setItems(viewCategory);
-        for (Category i: categoryData){
-            if (i.getName().equals(category.getName())){
-                taskCategory.setValue(i.getName());
-                break;
-            }
-        }
+//        for (Category i: categoryData){
+//            if (i.getName().equals(category.getName())){
+//                taskCategory.setValue(i.getName());
+//                break;
+//            }
+//        }
     }
     @FXML
     private void handleOk() {
@@ -77,7 +81,23 @@ public class TaskController {
             task.setName(nameTask.getText());
             task.setDescription(taskDesc.getText());
             task.setDeadline(deadline.getValue());
-            task.setUser(task.getUser());
+            ObservableList<User> userData = FXCollections.observableArrayList();
+            try {
+                userData = myApiSession.getUser();
+            } catch (NoConnectionException e) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.initOwner(main.getPrimaryStage());
+                alert.setTitle("Ошибка");
+                alert.setHeaderText("Нет соединения");
+
+                alert.showAndWait();
+            }
+            for (User i : userData) {
+                if (task.getUser().equals(i.getLogin())) {
+                    task.setUser(i);
+                    break;
+                }
+            }
             okClicked = true;
             dialogStage.close();
         }
