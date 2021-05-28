@@ -31,14 +31,17 @@ public class RestApi {
                 JSONObject currentClient = jsonResult.getJSONObject(i);
 
                 String login = currentClient.getString("login");
-                String surname = currentClient.getString("surname");
-                String name = currentClient.getString("name");
-                String father_name = currentClient.getString("father_name");
+//                String surname = "";
+//                if (currentClient.getString("surname") != null) {
+//                    surname = currentClient.getString("surname");
+//                }
+//                String name = currentClient.getString("name");
+//                String father_name = currentClient.getString("father_name");
                 String password = currentClient.getString("password");
-                LocalDate birthday = LocalDate.parse(currentClient.getString("birthday"));
+//                LocalDate birthday = LocalDate.parse(currentClient.getString("birthday"));
                 Long id = currentClient.getLong("id");
 
-                User newUser = new User(id, login, surname, name, father_name, password, birthday);
+                User newUser = new User(id, login, password);
                 result.add(newUser);
             }
         } else {
@@ -77,7 +80,7 @@ public class RestApi {
                 String description = currentTask.getString("description");
                 LocalDate deadline = LocalDate.parse(currentTask.getString("deadline"));
                 JSONObject user = currentTask.getJSONObject("user_id");
-                User newUser = new User(user.getLong("id"), user.getString("login"), user.getString("surname"), user.getString("name"), user.getString("father_name"), user.getString("password"), user.getString("birthday"));
+                User newUser = new User(user.getLong("id"), user.getString("login"), user.getString("password"));
                 Long id = currentTask.getLong("id");
 
                 Task newTask = new Task(id, name, description, deadline, newUser);

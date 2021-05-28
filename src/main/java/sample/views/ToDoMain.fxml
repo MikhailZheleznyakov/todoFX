@@ -7,10 +7,10 @@
    <children>
       <HBox layoutX="41.0" layoutY="29.0" spacing="30.0">
          <children>
-            <Button fx:id="handleNewTask" mnemonicParsing="false" text="Добавить задачу" />
-            <Button fx:id="handleEditTask" mnemonicParsing="false" text="Изменить задачу" />
-            <Button fx:id="handleDeleteTask" mnemonicParsing="false" text="Удалить задачу" />
-            <Button fx:id="handleAcceptTask" mnemonicParsing="false" text="Завершить задачу" />
+            <Button mnemonicParsing="false" onAction="#handleNewTask" text="Добавить задачу" />
+            <Button mnemonicParsing="false" onAction="#handleEditTask" text="Изменить задачу" />
+            <Button mnemonicParsing="false" onAction="#handleDeleteTask" text="Удалить задачу" />
+            <Button mnemonicParsing="false" onAction="#handleAcceptTask" text="Завершить задачу" />
          </children>
       </HBox>
       <TableView fx:id="tableToDo" layoutX="187.0" layoutY="74.0" prefHeight="227.0" prefWidth="327.0">
@@ -22,6 +22,6 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="handleCancel" layoutX="314.0" layoutY="338.0" mnemonicParsing="false" text="Категории" />
+      <Button layoutX="314.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleCancel" text="Категории" />
    </children>
 </AnchorPane>

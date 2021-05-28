@@ -29,7 +29,8 @@ public class HttpClass {
         }
     }
 
-    public static String PostRequest(String urlString, JSONObject jsonString){
+    public static String PostRequest(String urlString, JSONObject jsonString) {
+
         try {
             URL url = new URL(urlString);
             URLConnection conn = url.openConnection();
@@ -41,8 +42,7 @@ public class HttpClass {
             byte[] out = jsonString.toString().getBytes(StandardCharsets.UTF_8);
             int length = out.length;
             http.setFixedLengthStreamingMode(length);
-            http.setRequestProperty("Content-Type", "application/json; charset=UTF_8" );
-            http.setRequestProperty("Accept", "application/json");
+            http.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
             http.connect();
             try (OutputStream os = http.getOutputStream()) {
                 os.write(out);
@@ -52,12 +52,11 @@ public class HttpClass {
             InputStream is = new BufferedInputStream(conn.getInputStream());
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             String inputLine = "";
-            while ((inputLine = br.readLine()) != null){
+            while ((inputLine = br.readLine()) != null) {
                 sb.append(inputLine);
             }
             return sb.toString();
-        } catch (IOException e){
-            e.printStackTrace();
+        } catch (IOException e) {
             return null;
         }
     }
