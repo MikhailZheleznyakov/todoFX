@@ -92,12 +92,6 @@ public class TaskController {
 
                 alert.showAndWait();
             }
-            for (User i : userData) {
-                if (task.getUser().equals(i.getLogin())) {
-                    task.setUser(i);
-                    break;
-                }
-            }
             okClicked = true;
             dialogStage.close();
         }

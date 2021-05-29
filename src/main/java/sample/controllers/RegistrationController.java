@@ -39,7 +39,7 @@ public class RegistrationController {
 
     @FXML
     public void handleReg(){
-        User newUser = new User(-1L, null, null);
+        User newUser = new User(-1L, null, null, null, null, null, null);
         if (textPasswordReg.getText().equals(textAgainPasswordReg.getText())){
             newUser.setLogin(textLoginReg.getText());
             newUser.setPassword(textPasswordReg.getText());

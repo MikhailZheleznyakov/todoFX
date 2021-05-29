@@ -3,6 +3,7 @@ package sample.utils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import sample.Main;
 import sample.models.Category;
@@ -31,17 +32,34 @@ public class RestApi {
                 JSONObject currentClient = jsonResult.getJSONObject(i);
 
                 String login = currentClient.getString("login");
-//                String surname = "";
-//                if (currentClient.getString("surname") != null) {
-//                    surname = currentClient.getString("surname");
-//                }
-//                String name = currentClient.getString("name");
-//                String father_name = currentClient.getString("father_name");
+                String surname = null;
+                String name = null;
+                String father_name = null;
+                LocalDate birthday = null;
+                try{
+                    surname = currentClient.getString("surname");
+                }catch (JSONException ignored){
+
+                }
+                try{
+                    name = currentClient.getString("name");
+                }catch (JSONException ignored){
+
+                }
+                try{
+                    father_name = currentClient.getString("father_name");
+                }catch (JSONException ignored){
+
+                }
                 String password = currentClient.getString("password");
-//                LocalDate birthday = LocalDate.parse(currentClient.getString("birthday"));
+                try {
+                    birthday = LocalDate.parse(currentClient.getString("birthday"));
+                }catch (JSONException ignored){
+
+                }
                 Long id = currentClient.getLong("id");
 
-                User newUser = new User(id, login, password);
+                User newUser = new User(id, login, surname, name, father_name, password, birthday);
                 result.add(newUser);
             }
         } else {
@@ -77,13 +95,29 @@ public class RestApi {
                 JSONObject currentTask = jsonResult.getJSONObject(i);
 
                 String name = currentTask.getString("name");
-                String description = currentTask.getString("description");
+                String description = String.valueOf(currentTask.get("description"));
                 LocalDate deadline = LocalDate.parse(currentTask.getString("deadline"));
                 JSONObject user = currentTask.getJSONObject("user_id");
-                User newUser = new User(user.getLong("id"), user.getString("login"), user.getString("password"));
+                User newTaskUser = null;
+                try {
+                    newTaskUser = new User(user.getLong("id"),
+                            user.getString("login"),
+                            user.getString("surname"),
+                            user.getString("name"),
+                            user.getString("father_name"),
+                            user.getString("password"),
+                            LocalDate.parse(user.getString("birthday")));
+                } catch (JSONException e) {
+                    newTaskUser = new User(user.getLong("id"),
+                            user.getString("login"),
+                            null,
+                            null,
+                            null,
+                            user.getString("password"),
+                            null);
+                }
                 Long id = currentTask.getLong("id");
-
-                Task newTask = new Task(id, name, description, deadline, newUser);
+                Task newTask = new Task(id, name, description, deadline, newTaskUser);
                 result.add(newTask);
             }
         } else {

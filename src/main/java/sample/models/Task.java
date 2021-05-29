@@ -10,15 +10,15 @@ public class Task implements APIModel{
     private final StringProperty description;
     private final ObjectProperty<LocalDate> deadline;
     private final LongProperty id;
-    private User user;
+    private User user_id;
     private Category category;
 
-    public Task(Long id, String name, String description, Object deadline, User user) {
+    public Task(Long id, String name, String description, Object deadline, User user_id) {
         this.id = new SimpleLongProperty(id);
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);
         this.deadline = new SimpleObjectProperty<LocalDate>((LocalDate) deadline);
-        this.user = user;
+        this.user_id = user_id;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class Task implements APIModel{
         map.put("name", name.get());
         map.put("description", description.get());
         map.put("deadline", deadline.get());
-        map.put("user_id", user.toJson());
+        map.put("user_id", user_id.toJson());
 
         return map;
     }
@@ -82,12 +82,20 @@ public class Task implements APIModel{
         this.id.set(id);
     }
 
-    public User getUser() {
-        return user;
+    public User getUser_id() {
+        return user_id;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser_id(User user_id) {
+        this.user_id = user_id;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override
@@ -97,7 +105,7 @@ public class Task implements APIModel{
                 ", description=" + description +
                 ", deadline=" + deadline +
                 ", id=" + id +
-                ", user=" + user +
+                ", user_id=" + user_id +
                 '}';
     }
 }
